@@ -1,0 +1,4 @@
+backend/loja.db
+backend/loja.db-wal
+backend/loja.db-shm
+__pycache__/
