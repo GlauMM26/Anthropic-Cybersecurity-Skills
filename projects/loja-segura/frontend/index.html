@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loja Segura</title>
+  <!-- Sem scripts inline e sem CDN: a Content-Security-Policy do servidor só
+       permite recursos da própria origem ('self'). Isso neutraliza a maior
+       parte dos ataques de XSS refletido/armazenado. -->
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>🛒 Loja Segura</h1>
+    <nav>
+      <button id="nav-catalog" class="link" type="button">Catálogo</button>
+      <button id="nav-orders" class="link" type="button" hidden>Meus pedidos</button>
+      <span id="user-box"></span>
+      <button id="btn-cart" type="button">Carrinho (<span id="cart-count">0</span>)</button>
+    </nav>
+  </header>
+
+  <main>
+    <p id="flash" class="flash" hidden></p>
+
+    <!-- Catálogo -->
+    <section id="view-catalog">
+      <h2>Produtos</h2>
+      <div id="product-grid" class="grid" aria-live="polite"></div>
+    </section>
+
+    <!-- Carrinho / checkout -->
+    <section id="view-cart" hidden>
+      <h2>Carrinho</h2>
+      <table class="cart">
+        <thead><tr><th>Produto</th><th>Qtd</th><th>Unitário</th><th>Subtotal</th><th></th></tr></thead>
+        <tbody id="cart-rows"></tbody>
+        <tfoot><tr><td colspan="3">Total</td><td id="cart-total">R$ 0,00</td><td></td></tr></tfoot>
+      </table>
+      <button id="btn-checkout" type="button" class="primary">Finalizar compra</button>
+    </section>
+
+    <!-- Pedidos -->
+    <section id="view-orders" hidden>
+      <h2>Meus pedidos</h2>
+      <div id="orders-list"></div>
+    </section>
+
+    <!-- Autenticação -->
+    <section id="view-auth" hidden>
+      <div class="auth-grid">
+        <form id="form-login" class="card" autocomplete="on">
+          <h2>Entrar</h2>
+          <label>E-mail <input name="email" type="email" required maxlength="320" autocomplete="username"></label>
+          <label>Senha <input name="password" type="password" required minlength="10" maxlength="128" autocomplete="current-password"></label>
+          <button type="submit" class="primary">Entrar</button>
+        </form>
+        <form id="form-register" class="card" autocomplete="on">
+          <h2>Criar conta</h2>
+          <label>E-mail <input name="email" type="email" required maxlength="320" autocomplete="username"></label>
+          <label>Senha (mín. 10) <input name="password" type="password" required minlength="10" maxlength="128" autocomplete="new-password"></label>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Projeto de estudo · HTML + JS · Python (stdlib) · SQLite · segurança desde o início.</small>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
